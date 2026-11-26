@@ -433,23 +433,36 @@ class _LoadingMask extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: Material(
-        color: Colors.black26,
+        color: const Color(0x4D16181D),
         child: Center(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            constraints: const BoxConstraints(minWidth: 120),
+            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 22),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+              color: const Color(0xFF16181D),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const CircularProgressIndicator(
-                  strokeWidth: 3,
-                  valueColor: AlwaysStoppedAnimation(Color(0xFF4C7DFF)),
+                const SizedBox(
+                  width: 26,
+                  height: 26,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    strokeCap: StrokeCap.round,
+                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                  ),
                 ),
-                const SizedBox(height: 12),
-                Text(title, style: const TextStyle(fontSize: 14, color: Color(0xFF666666))),
+                const SizedBox(height: 14),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
@@ -484,21 +497,37 @@ class _ToastWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 160,
+      bottom: 132,
       left: 0,
       right: 0,
       child: IgnorePointer(
         child: Center(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 300),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            decoration: BoxDecoration(
-              color: Colors.black87,
-              borderRadius: BorderRadius.circular(8),
+          child: TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0, end: 1),
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOut,
+            builder: (_, t, child) => Opacity(
+              opacity: t,
+              child: Transform.translate(offset: Offset(0, 8 * (1 - t)), child: child),
             ),
-            child: Text(
-              message,
-              style: const TextStyle(fontSize: 14, color: Colors.white),
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 300),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
+              decoration: BoxDecoration(
+                color: const Color(0xFF16181D),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Text(
+                message,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 14,
+                  height: 1.4,
+                  color: Colors.white,
+                  decoration: TextDecoration.none,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
         ),
