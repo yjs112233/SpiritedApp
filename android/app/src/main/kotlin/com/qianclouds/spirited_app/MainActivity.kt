@@ -1,0 +1,5 @@
+package com.qianclouds.spirited_app
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()

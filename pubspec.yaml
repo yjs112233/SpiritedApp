@@ -1,0 +1,35 @@
+name: spirited_app
+description: QianClouds 多云数据管理 App（小程序端 Flutter 移植版）
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # 网络请求（对应 MP utils/request.js 的 wx.request 封装）
+  dio: ^5.7.0
+  # 轻量状态管理（登录态/用户信息）
+  provider: ^6.1.2
+  # 本地 KV 存储（对应 MP utils/store.js 的 wx.setStorageSync）
+  shared_preferences: ^2.3.3
+  # AES-128-CBC 解密（对应 MP utils/crypto.js 的 v2 响应解密）
+  encrypt: ^5.0.3
+  # MD5 签名（X-IDE 头）
+  crypto: ^3.0.6
+  # OAuth 授权页（对应 MP pages/oauth/webview）
+  webview_flutter: ^4.10.0
+  # 下载文件落盘目录
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
